@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>發表文章</title>
+  </head>
+  <body>
+    <h1>發表新文章</h1>
+    <form method="post">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">發表</button>
+    </form>
+    <a href="{% url 'post_list' %}">返回討論區</a>
+  </body>
+</html>

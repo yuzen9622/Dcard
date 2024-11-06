@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ category|default:"My低能卡" }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+      <aside class="navbar">
+        <a href="{% url 'post_create' %}">發表文章</a>
+        <h3>分類</h3>
+        <ul>
+          <li>
+            <a href="{% url 'post_list'  %}">所有</a>
+          </li>
+          <li>
+            <a href="{% url 'post_list_by_category' category='NTUB' %}">北商</a>
+          </li>
+          <li>
+            <a href="{% url 'post_list_by_category' category='NTUT' %}">北科</a>
+          </li>
+          <li>
+            <a href="{% url 'post_list_by_category' category='NTUH' %}">北醫</a>
+          </li>
+          <li>
+            <a href="{% url 'post_list_by_category' category='NTUST' %}"
+              >台科</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'post_list_by_category' category='other' %}"
+              >其他</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'post_list_by_category' category='mood' %}">心情</a>
+          </li>
+          <li>
+            <a href="{% url 'post_list_by_category' category='note' %}">雜記</a>
+          </li>
+          <li>
+            <a href="{% url 'post_list_by_category' category='tech' %}">科技</a>
+          </li>
+        </ul>
+      </aside>
+      {% load custom_filters %}
+      <main class="main-container">
+        <h1>討論區 - {{ category|default:"所有" }}</h1>
+        <div class="posts">
+          {% if posts %} {% for post in posts %}
+          <div class="post">
+            <a
+              class="detail"
+              href="{% url 'post_list_by_category' category=post.category %}"
+            >
+              {{ post.get_category_display }} ·
+              {{post.created_at|time_since_custom}}
+            </a>
+            <a href="{% url 'article_post' id=post.id %}">
+              <h2>{{ post.title }}</h2>
+              <p>{{ post.content|truncatewords:20 }}</p>
+            </a>
+          </div>
+          {% endfor %} {% else %}
+          <h1>暫無文章</h1>
+          {% endif %}
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

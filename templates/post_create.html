@@ -1,14 +1,59 @@
 <!DOCTYPE html>
 <html>
   <head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/style.css' %}" />
     <title>發表文章</title>
   </head>
   <body>
-    <h1>發表新文章</h1>
-    <form method="post">
-      {% csrf_token %} {{ form.as_p }}
-      <button type="submit">發表</button>
-    </form>
-    <a href="{% url 'post_list' %}">返回討論區</a>
+    <div class="container">
+      <aside class="navbar">
+        <a href="{% url 'post_create' %}">發表文章</a>
+        <h3>分類</h3>
+        <ul>
+          <li>
+            <a href="{% url 'post_list'  %}">所有</a>
+          </li>
+          <li>
+            <a href="{% url 'post_list_by_category' category='NTUB' %}">北商</a>
+          </li>
+          <li>
+            <a href="{% url 'post_list_by_category' category='NTUT' %}">北科</a>
+          </li>
+          <li>
+            <a href="{% url 'post_list_by_category' category='NTUH' %}">北醫</a>
+          </li>
+          <li>
+            <a href="{% url 'post_list_by_category' category='NTUST' %}"
+              >台科</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'post_list_by_category' category='other' %}"
+              >其他</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'post_list_by_category' category='mood' %}">心情</a>
+          </li>
+          <li>
+            <a href="{% url 'post_list_by_category' category='note' %}">雜記</a>
+          </li>
+          <li>
+            <a href="{% url 'post_list_by_category' category='tech' %}">科技</a>
+          </li>
+        </ul>
+      </aside>
+      <div class="main-container">
+        <div class="create">
+          <h1>發表新文章</h1>
+          <form method="post">
+            {% csrf_token %} {{ form }}
+            <button type="submit">發表</button>
+          </form>
+          <a href="{% url 'post_list' %}">返回討論區</a>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

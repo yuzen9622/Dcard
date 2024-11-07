@@ -96,13 +96,13 @@
           {% endif %}
           <div class="recommend">
             {% if same_article %} {% for post in same_article %}
-            <div class="card">
-              <a href="{% url 'article_post' id=post.id %}">
-                <p class="detail">{{post.get_category_display}}</p>
-                <h1>{{post.title}}</h1>
-                <p>{{post.content}}</p>
-              </a>
-            </div>
+
+            <a class="card" href="{% url 'article_post' id=post.id %}">
+              <p class="detail">{{post.get_category_display}}</p>
+              <h1>{{post.title}}</h1>
+              <p>{{post.content}}</p>
+            </a>
+
             {% endfor %} {% endif %}
           </div>
         </div>

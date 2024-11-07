@@ -5,7 +5,7 @@ from .forms import PostForm
 # Create your views here.
 
 def index(request):
-    return HttpResponse("hello world")
+    return redirect('post_list')
 
 def post_list(request, category=None):
     CATEGORY_DICT = dict(Post.CATEGORY_CHOICES)
@@ -30,8 +30,9 @@ def post_create(request):
 def article_post(request,id):
     if id:
         article=Post.objects.get(id=id)
+        same_article=Post.objects.filter(category=article.category).exclude(id=id)
         if article:
-            return render(request,'article.html',{'article':article})
+            return render(request,'article.html',{'article':article,'same_article':same_article})
         else:
             return redirect('post_list')
     else:

@@ -51,6 +51,7 @@
     min-width: 200px;
     background-color: #00324e;
     color: white;
+    transition: all .3s;
     
     
 }
@@ -76,7 +77,12 @@ margin:5px 10px;
     background-color: 
     #01121c;
 }
-
+.navbar .active:hover{
+    background-color: #00324e;
+}
+.navbar .active{
+    background-color:#ffffff4d ;
+}
 /*文章顯示區域*/
 .posts{
     

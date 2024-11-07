@@ -14,35 +14,67 @@
         <h3>分類</h3>
         <ul>
           <li>
-            <a href="{% url 'post_list'  %}">所有</a>
+            <a
+              class="{% if article.get_category_display == default %}active{% endif %}"
+              href="{% url 'post_list' %}"
+              >所有</a
+            >
           </li>
           <li>
-            <a href="{% url 'post_list_by_category' category='NTUB' %}">北商</a>
+            <a
+              class="{% if article.get_category_display == '北商' %}active{% endif %}"
+              href="{% url 'post_list_by_category' category='NTUB' %}"
+              >北商</a
+            >
           </li>
           <li>
-            <a href="{% url 'post_list_by_category' category='NTUT' %}">北科</a>
+            <a
+              class="{% if article.get_category_display == '北科' %}active{% endif %}"
+              href="{% url 'post_list_by_category' category='NTUT' %}"
+              >北科</a
+            >
           </li>
           <li>
-            <a href="{% url 'post_list_by_category' category='NTUH' %}">北醫</a>
+            <a
+              class="{% if article.get_category_display == '北醫' %}active{% endif %}"
+              href="{% url 'post_list_by_category' category='NTUH' %}"
+              >北醫</a
+            >
           </li>
           <li>
-            <a href="{% url 'post_list_by_category' category='NTUST' %}"
+            <a
+              class="{% if article.get_category_display == '台科' %}active{% endif %}"
+              href="{% url 'post_list_by_category' category='NTUST' %}"
               >台科</a
             >
           </li>
           <li>
-            <a href="{% url 'post_list_by_category' category='other' %}"
+            <a
+              class="{% if article.get_category_display == '其他' %}active{% endif %}"
+              href="{% url 'post_list_by_category' category='other' %}"
               >其他</a
             >
           </li>
           <li>
-            <a href="{% url 'post_list_by_category' category='mood' %}">心情</a>
+            <a
+              class="{% if category == '心情' %}active{% endif %}"
+              href="{% url 'post_list_by_category' category='mood' %}"
+              >心情</a
+            >
           </li>
           <li>
-            <a href="{% url 'post_list_by_category' category='note' %}">雜記</a>
+            <a
+              class="{% if article.get_category_display == '雜記' %}active{% endif %}"
+              href="{% url 'post_list_by_category' category='note' %}"
+              >雜記</a
+            >
           </li>
           <li>
-            <a href="{% url 'post_list_by_category' category='tech' %}">科技</a>
+            <a
+              class="{% if article.get_category_display == '科技' %}active{% endif %}"
+              href="{% url 'post_list_by_category' category='tech' %}"
+              >科技</a
+            >
           </li>
         </ul>
       </aside>

@@ -7,7 +7,7 @@ from .forms import PostForm
 def index(request):
     return redirect('post_list')
 
-def post_list(request, category=None):
+def post_list(request, category=None,id=None):
     CATEGORY_DICT = dict(Post.CATEGORY_CHOICES)
     category_name=CATEGORY_DICT.get(category)
     if category:

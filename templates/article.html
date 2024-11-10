@@ -4,81 +4,19 @@
     <meta charset="UTF-8" />
     {% load static %}
     <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+    <link
+      rel="preload"
+      href="https://kit.fontawesome.com/b61b5c8440.js"
+      as="script"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ article.title }}</title>
   </head>
   <body>
+    {% include "component/navbar.html" %}
+
     <div class="container">
-      <aside class="navbar">
-        <a href="{% url 'post_create' %}">發表文章</a>
-        <h3>分類</h3>
-        <ul>
-          <li>
-            <a
-              class="{% if article.get_category_display == default %}active{% endif %}"
-              href="{% url 'post_list' %}"
-              >所有</a
-            >
-          </li>
-          <li>
-            <a
-              class="{% if article.get_category_display == '北商' %}active{% endif %}"
-              href="{% url 'post_list_by_category' category='NTUB' %}"
-              >北商</a
-            >
-          </li>
-          <li>
-            <a
-              class="{% if article.get_category_display == '北科' %}active{% endif %}"
-              href="{% url 'post_list_by_category' category='NTUT' %}"
-              >北科</a
-            >
-          </li>
-          <li>
-            <a
-              class="{% if article.get_category_display == '北醫' %}active{% endif %}"
-              href="{% url 'post_list_by_category' category='NTUH' %}"
-              >北醫</a
-            >
-          </li>
-          <li>
-            <a
-              class="{% if article.get_category_display == '台科' %}active{% endif %}"
-              href="{% url 'post_list_by_category' category='NTUST' %}"
-              >台科</a
-            >
-          </li>
-          <li>
-            <a
-              class="{% if article.get_category_display == '其他' %}active{% endif %}"
-              href="{% url 'post_list_by_category' category='other' %}"
-              >其他</a
-            >
-          </li>
-          <li>
-            <a
-              class="{% if category == '心情' %}active{% endif %}"
-              href="{% url 'post_list_by_category' category='mood' %}"
-              >心情</a
-            >
-          </li>
-          <li>
-            <a
-              class="{% if article.get_category_display == '雜記' %}active{% endif %}"
-              href="{% url 'post_list_by_category' category='note' %}"
-              >雜記</a
-            >
-          </li>
-          <li>
-            <a
-              class="{% if article.get_category_display == '科技' %}active{% endif %}"
-              href="{% url 'post_list_by_category' category='tech' %}"
-              >科技</a
-            >
-          </li>
-        </ul>
-      </aside>
-      {% load custom_filters %}
+      {% include "component/sidebar.html" %} {% load custom_filters %}
       <div class="main-container">
         <div class="article">
           <a
@@ -87,6 +25,7 @@
             >{{article.get_category_display }}</a
           >
           <h1>{{ article.title }}</h1>
+          <p class="poster">{{article.poster|default:"匿名"}} 發表</p>
           <p class="detail">{{article.created_at|time}}</p>
           <p>{{ article.content }}</p>
         </div>

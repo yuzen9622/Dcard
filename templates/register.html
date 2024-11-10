@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+    <script
+      src="https://kit.fontawesome.com/b61b5c8440.js"
+      crossorigin="anonymous"
+    ></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {% include "component/navbar.html" %}
+    <div class="container">
+      <div class="main-container">
+        <div class="register-container">
+          <h1>註冊</h1>
+          <form method="POST" action="{% url 'register' %}">
+            {% csrf_token %}
+            <div class="user">
+              <label for="username">使用者名稱</label>
+              <input type="text" name="username" id="username" required />
+            </div>
+
+            <div class="user">
+              <label for="email">電子郵件</label>
+              <input type="email" name="email" id="email" required />
+              <small class="error" id="email_error"></small>
+            </div>
+            <div class="user">
+              <label for="password">密碼</label>
+              <input type="password" name="password" id="password" required />
+            </div>
+            <div class="user">
+              <label for="password_confirm">確認密碼</label>
+              <input
+                type="password"
+                name="password_confirm"
+                id="password_confirm"
+                required
+              />
+            </div>
+            <div class="check-box">
+              <input type="checkbox" name="" id="show" />
+              <label for="show">顯示密碼</label>
+            </div>
+            <p>已經有帳號了嗎?<a href="{% url 'login' %}">登入</a></p>
+            {% if messages %} {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %} {% endif %}
+            <button type="submit">註冊</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="{% static '/js/script.js' %}"></script>
+  </body>
+</html>

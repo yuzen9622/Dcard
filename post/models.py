@@ -1,5 +1,5 @@
 from django.db import models
-
+from accounts.models import UserAccount
 # Create your models here.
 class Post(models.Model):
     CATEGORY_CHOICES = [
@@ -16,6 +16,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
     category = models.CharField(max_length=10, choices=CATEGORY_CHOICES)
+    poster=models.ForeignKey(UserAccount,on_delete=models.SET_NULL, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

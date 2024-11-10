@@ -345,6 +345,7 @@ align-items: center;
     margin-top: 20px;
     font-weight: 400;
     font-size: 38px;
+    text-align: center;
 }
 :is(.register-container,.login-container,.popbox) .user{
     margin: 10px;

@@ -1,18 +1,18 @@
 *{
-    font-family: 'Courier New', Courier, monospace;
+    font-family:Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
 }
 
-.navbar ::-webkit-scrollbar {
+.sidebar ::-webkit-scrollbar {
     width: 10px; /*右側捲軸寬度*/
     height: 10px; /*下方捲軸高度*/
   }
-  .navbar ::-webkit-scrollbar-track {
+  .sidebar ::-webkit-scrollbar-track {
     background: transparent; 
   }
 
-  .navbar ::-webkit-scrollbar-thumb {
+  .sidebar ::-webkit-scrollbar-thumb {
     background:#01121c; 
 }
 
@@ -27,24 +27,104 @@
 .main-container::-webkit-scrollbar-thumb,.main-container ::-webkit-scrollbar-thumb {
     background:#0000001a; 
 }
+body{
+    display: flex;
+    height: 100dvh;
+    flex-direction: column;
+    background-color: #00324e;
+}
 .container{
     display: flex;
-    height: 100vh;
- justify-content: center;
-    background-color: #00324e;
+    justify-content: center;
+    height: 100%;
+    overflow: hidden;
+
 }
 .main-container{
     margin: 10px;
     border-radius: 15px;
     background-color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+display: flex;
+flex-direction: column;
+align-items: center;
     width: 60%;
-  
+
+}
+.main-container h1{
+ 
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow:hidden;
+    white-space: nowrap;
+
 }
 /*navbar*/
 .navbar{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    background-color:#006aa6;
+    color: white;
+font-size: 18px;
+}
+.navbar .search{
+    display: flex;
+    align-items: center;
+width: 50%;
+}
+.navbar .search a{
+    font-weight: 600;
+    font-size: 22px;
+}
+.navbar form{
+    display: flex;
+    height: 100%;
+    border: 1px solid #00314e7f;
+}
+.navbar input{
+    height: 100%;
+    padding: 5px;
+    font-size: 18px;
+    font-weight: 400;
+    background-color:
+    #00314e7f;
+    border: none;
+    outline: none;
+    color: white;
+    flex: 1;
+    
+  
+}
+.navbar button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+  
+    border: none;
+   
+    font-size: 16px;
+    background-color:transparent ;
+    color: white;
+}
+.navbar img{
+    width: 16px;
+    color: white;
+}
+.navbar input::placeholder{
+    color: #ffffff51;
+}
+
+.navbar a{
+    text-decoration: none;
+    color:  white;
+    font-size: 18px;
+    padding: 5px 10px;
+}
+/*sidebar*/
+.sidebar{
     display: flex;
     padding: 10px;
     flex-direction: column;
@@ -55,16 +135,16 @@
     
     
 }
-.navbar ul{
+.sidebar ul{
     list-style: none;
     overflow: auto;
 }
-.navbar h3{
+.sidebar h3{
 margin:5px 10px;
     color: 
     #ffffff66;
 }
-.navbar a{
+.sidebar a{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -75,14 +155,14 @@ margin:5px 10px;
     transition: all .3s;
 }
 
-.navbar a:hover{
+.sidebar a:hover{
     background-color: 
     #01121c;
 }
-.navbar .active:hover{
+.sidebar .active:hover{
     background-color: #00324e;
 }
-.navbar .active{
+.sidebar .active{
     background-color:#ffffff4d ;
 }
 /*文章顯示區域*/
@@ -107,12 +187,9 @@ margin:5px 10px;
 }
 .post p,.card p{
     font-size: 18px;
-    text-overflow: ellipsis; 
-    overflow: hidden;
   text-overflow: ellipsis;
   overflow:hidden;
   white-space: nowrap;
-  text-overflow: ellipsis;
 }
 .detail{
     font-size: 16px !important;
@@ -144,8 +221,14 @@ margin:5px 10px;
     padding: 10px 20px;
     
 }
+.article .poster{
+    color: #3397cf;
+    font-size: 18px;
+   font-weight: 600;
+}
 .article h1{
     margin-top: 10px;
+    text-align: start;
     border-top: 1px solid #0000001a;
     font-size:30px;
 }
@@ -185,10 +268,14 @@ margin:5px 10px;
     align-items: center;
     width: auto;
 }
-.create textarea{
+.create textarea,.create input,.create select{
     padding: 5px;
     font-size: 18px;
     resize: vertical;
+    border: 1px solid #00000039;
+    outline: none;
+    border-radius: 10px;
+    letter-spacing: 1px;
 }
 .create input{
     font-size: 20px;
@@ -196,13 +283,13 @@ margin:5px 10px;
 .create button{
     width: 30%;
 }
-.create a,button{
+
+.create a,.create button{
     margin: 10px;
     text-decoration: none;
     color: white;
-    background-color: #00324e;
     padding: 10px;
-    border-radius: 15px;
+    border-radius: 10px;
     font-size: 20px;
 }
 /*推薦文章*/
@@ -233,4 +320,175 @@ border: 2px solid #10101075;
 margin:  0 10px;
 border-radius: 15px;
 height: 100px;
+}
+/*登入區域*/
+.main-container:has(.login-container,.register-container){
+    max-width:600px;
+}
+:is(.register-container,.login-container){
+    display: flex;
+    flex-direction: column;
+align-items: center;
+    width: 100%;
+
+}
+:is(.register-container,.login-container,.popbox) form{
+    display: flex;
+    flex-direction: column;
+justify-content: space-around;
+align-items: center;
+    height: 100%;
+    width: 100%;
+
+}
+:is(.register-container,.login-container,.create,.popbox) h1{
+    margin-top: 20px;
+    font-weight: 400;
+    font-size: 38px;
+}
+:is(.register-container,.login-container,.popbox) .user{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    width:80%;
+}
+:is(.register-container,.login-container,.popbox) label{
+    padding: 10px 10px 10px 0;
+}
+:is(.register-container,.login-container,.popbox) input,:is(.register-container,.login-container,.popbox) button{
+    padding: 15px;
+    letter-spacing: .5px;
+    font-size: 18px;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid #00000039;
+}
+:is(.register-container,.login-container,.create,.popbox) button{
+   border: none;
+    width: 80%;
+    background-color:
+    #3397cf ;
+    color: white;
+    margin-top: 20px;
+   
+}
+:is(.register-container,.login-container,.create) a{
+    text-decoration: none;
+    color: #3397cf;
+}
+:is(.register-container,.login-container,.create,.popbox) button:hover{
+    background-color: #64acd5;
+}
+:is(.register-container,.login-container,.create,.popbox) button:active{
+    box-shadow: inset 0px 1px 2px #333;
+}
+.error{
+    color:rgb(234, 92, 92) ;
+}
+/*個人區域*/
+.profile-container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top:20px ;
+}
+.profile-container .avatar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    background-color: #3397cf;
+    font-size: 55px;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.profile-container .profile{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.profile p{
+
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+.profile a{
+    text-decoration: none;
+    text-align: center;
+    font-size: 18px;
+    padding: 5px;
+    border: none;
+    background-color:#3397cf;
+    color: white;
+    border-radius:10px ;
+}
+
+.popbox{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+background-color: rgba(0, 0, 0,0.5);
+
+border-radius: 10px;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+}
+.popbox form{
+    position: relative;
+    background-color: white;
+    width: 600px;
+height: min-content;
+    border-radius: 10px;
+    justify-content: flex-start;
+    padding: 20px;
+}
+.popbox a{
+    position: absolute;
+    right: 10%;
+    text-decoration: none;
+    color: black;
+padding: 10px;
+width: 20px;
+display: flex;
+align-items: center;
+height: 20px;
+justify-content: center;
+border-radius: 100%;
+}
+.popbox img{
+    width: 16px;
+}
+.popbox a:hover{
+    background-color: rgba(0, 0, 0,0.1);
+}
+.check-box{
+    display: flex;
+    width: 80%;
+}
+.check-box label{
+    padding: 10px;
+}
+.check-box input{
+    width: 18px;
+    background-color: #3397cf;
+   
+}
+.history{
+    width: 100%;
+overflow: hidden;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.history .posts{
+ 
+    margin: 0;
 }

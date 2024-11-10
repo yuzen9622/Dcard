@@ -3,82 +3,25 @@
   <head>
     <title>{{ category|default:"My低能卡" }}</title>
     {% load static %}
+    <script
+      src="https://kit.fontawesome.com/b61b5c8440.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="{% static '/css/style.css' %}" />
   </head>
   <body>
+    {% include "component/navbar.html" %}
     <div class="container">
-      <aside class="navbar">
-        <a href="{% url 'post_create' %}">發表文章</a>
-        <h3>分類</h3>
-        <ul>
-          <li>
-            <a
-              class="{% if category == default %}active{% endif %}"
-              href="{% url 'post_list' %}"
-              >所有</a
-            >
-          </li>
-          <li>
-            <a
-              class="{% if category == '北商' %}active{% endif %}"
-              href="{% url 'post_list_by_category' category='NTUB' %}"
-              >北商</a
-            >
-          </li>
-          <li>
-            <a
-              class="{% if category == '北科' %}active{% endif %}"
-              href="{% url 'post_list_by_category' category='NTUT' %}"
-              >北科</a
-            >
-          </li>
-          <li>
-            <a
-              class="{% if category == '北醫' %}active{% endif %}"
-              href="{% url 'post_list_by_category' category='NTUH' %}"
-              >北醫</a
-            >
-          </li>
-          <li>
-            <a
-              class="{% if category == '台科' %}active{% endif %}"
-              href="{% url 'post_list_by_category' category='NTUST' %}"
-              >台科</a
-            >
-          </li>
-          <li>
-            <a
-              class="{% if category == '其他' %}active{% endif %}"
-              href="{% url 'post_list_by_category' category='other' %}"
-              >其他</a
-            >
-          </li>
-          <li>
-            <a
-              class="{% if category == '心情' %}active{% endif %}"
-              href="{% url 'post_list_by_category' category='mood' %}"
-              >心情</a
-            >
-          </li>
-          <li>
-            <a
-              class="{% if category == '雜記' %}active{% endif %}"
-              href="{% url 'post_list_by_category' category='note' %}"
-              >雜記</a
-            >
-          </li>
-          <li>
-            <a
-              class="{% if category == '科技' %}active{% endif %}"
-              href="{% url 'post_list_by_category' category='tech' %}"
-              >科技</a
-            >
-          </li>
-        </ul>
-      </aside>
-      {% load custom_filters %}
+      {% include "component/sidebar.html" %} {% load custom_filters %}
       <main class="main-container">
-        <h1>討論區 - {{ category|default:"所有" }}</h1>
+        {% if query %}
+        <h1 style="text-align: center">搜尋 - {{ query }}</h1>
+        {% else %}
+        <h1 style="text-align: center">
+          討論區 - {{ category|default:"所有" }}
+        </h1>
+        {% endif %}
+
         <div class="posts">
           {% if posts %} {% for post in posts %}
           <div class="post">
@@ -100,5 +43,6 @@
         </div>
       </main>
     </div>
+    <script src="{% static '/js/script.js' %}"></script>
   </body>
 </html>

@@ -1,0 +1,69 @@
+<aside class="sidebar">
+  <a href="{% url 'post_create' %}">發表文章</a>
+  <h3>分類</h3>
+  <ul>
+    <li>
+      <a
+        class="{% if article.get_category_display == None and category == None and query == None %}active{% endif %}"
+        href="{% url 'post_list' %}"
+        >所有</a
+      >
+    </li>
+    <li>
+      <a
+        class="{% if category == '北商' and query == None %}active{% endif %}"
+        href="{% url 'post_list_by_category' category='NTUB' %}"
+        >北商</a
+      >
+    </li>
+    <li>
+      <a
+        class="{% if category == '北科' and query == None %}active{% endif %}"
+        href="{% url 'post_list_by_category' category='NTUT' %}"
+        >北科</a
+      >
+    </li>
+    <li>
+      <a
+        class="{% if category == '北醫' and query == None %}active{% endif %}"
+        href="{% url 'post_list_by_category' category='NTUH' %}"
+        >北醫</a
+      >
+    </li>
+    <li>
+      <a
+        class="{% if category == '台科' and query == None %}active{% endif %}"
+        href="{% url 'post_list_by_category' category='NTUST' %}"
+        >台科</a
+      >
+    </li>
+    <li>
+      <a
+        class="{% if category == '其他' and query == None %}active{% endif %}"
+        href="{% url 'post_list_by_category' category='other' %}"
+        >其他</a
+      >
+    </li>
+    <li>
+      <a
+        class="{% if category == '心情' and query == None %}active{% endif %}"
+        href="{% url 'post_list_by_category' category='mood' %}"
+        >心情</a
+      >
+    </li>
+    <li>
+      <a
+        class="{% if category == '雜記' and query == None %}active{% endif %}"
+        href="{% url 'post_list_by_category' category='note' %}"
+        >雜記</a
+      >
+    </li>
+    <li>
+      <a
+        class="{% if category == '科技' and query == None %}active{% endif %}"
+        href="{% url 'post_list_by_category' category='tech' %}"
+        >科技</a
+      >
+    </li>
+  </ul>
+</aside>

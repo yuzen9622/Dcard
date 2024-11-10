@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+    <script
+      src="https://kit.fontawesome.com/b61b5c8440.js"
+      crossorigin="anonymous"
+    ></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>登入</title>
+  </head>
+  <body>
+    {% include "component/navbar.html" %}
+    <div class="container">
+      <div class="main-container">
+        <div class="login-container">
+          <h1>登入</h1>
+          <form method="post">
+            {% csrf_token %}
+            <div class="user">
+              <label for="email">常用信箱</label>
+              <input
+                type="text"
+                required
+                name="email"
+                placeholder="輸入信箱"
+                id="email"
+              />
+              <small class="error" id="email_error"></small>
+            </div>
+            <div class="user">
+              <label for="password">密碼</label>
+              <input
+                type="password"
+                required
+                name="password"
+                placeholder="輸入密碼"
+                id="password"
+              />
+            </div>
+            <div class="check-box">
+              <input type="checkbox" name="" id="show" />
+              <label for="show">顯示密碼</label>
+            </div>
+            <p>還沒有帳號嗎?<a href="{% url 'register' %}">註冊</a></p>
+            {% if messages %} {% for message in messages %}
+            <p class="error">{{message}}</p>
+            {% endfor %} {% endif %}
+            <button type="submit">登入</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="{% static '/js/script.js' %}"></script>
+  </body>
+</html>

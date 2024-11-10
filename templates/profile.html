@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+    <script
+      src="https://kit.fontawesome.com/b61b5c8440.js"
+      crossorigin="anonymous"
+    ></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>個人檔案</title>
+  </head>
+  <body>
+    {% if edit %}
+    <div class="popbox">
+      <form method="post">
+        {% csrf_token %} {% load static %}
+        <a href="{% url 'profile'  %}"
+          ><img src="{% static 'img/x-icon.svg' %}" alt=""
+        /></a>
+        <h1>編輯</h1>
+        <div class="user">
+          <label for="username">新名稱</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            value="{{user.username}}"
+          />
+        </div>
+        <div class="user">
+          <label for="email">新電子郵件</label>
+          <input type="email" id="email" name="email" value="{{user.email}}" />
+        </div>
+        <div class="user">
+          <label for="password">舊密碼</label>
+          <input type="password" id="password" name="password" value="" />
+        </div>
+        <div class="user">
+          <label for="new_password">新密碼</label>
+          <input
+            type="password"
+            id="new_password"
+            name="new_password"
+            value=""
+          />
+        </div>
+        <div class="user">
+          <label for="comfirm_password">確認新密碼</label>
+          <input
+            type="password"
+            id="comfirm_password"
+            name="comfirm_password"
+            value=""
+          />
+        </div>
+        <div class="check-box">
+          <input type="checkbox" name="" id="show" />
+          <label for="show">顯示密碼</label>
+        </div>
+
+        {% if messages %} {% for message in messages %}
+        <p class="error">{{message}}</p>
+        {% endfor %} {% endif %}
+        <button type="submit">更新</button>
+      </form>
+    </div>
+    {% endif %} {% include 'component/navbar.html' %}
+    <div class="container">
+      <div class="main-container">
+        <div class="profile-container">
+          <div class="avatar">{{user.username|slice:":1"}}</div>
+          <div class="profile">
+            <p>{{user.username}}</p>
+            <p>{{user.email}}</p>
+
+            <a href="{% url 'profile'  %}?edit=true">更改個人資料</a>
+          </div>
+        </div>
+        <div class="history">
+          <h1>發文紀錄</h1>
+          {% if history %} {% load custom_filters %}
+          <div class="posts">
+            {% for post in history%}
+            <div class="post">
+              <a
+                class="detail"
+                href="{% url 'post_list_by_category' category=post.category %}"
+              >
+                {{ post.get_category_display }} ·
+                {{post.created_at|time_since_custom}}
+              </a>
+              <a href="{% url 'article_post' id=post.id %}">
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.content|truncatewords:20 }}</p>
+              </a>
+            </div>
+            {% endfor %} {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="{% static '/js/script.js' %}"></script>
+  </body>
+</html>

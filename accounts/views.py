@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages  # 引入 messages 系統
 from django.contrib.auth import logout
 from post.models import Post
+import os
 # Create your views here.
 def login_user(request):
     user=None
@@ -84,12 +85,18 @@ def profile(request):
         history=Post.objects.filter(poster=user)
         # 檢查是否為 POST 請求，並更新使用者資料
         if request.method == 'POST':
+            new_avatar=request.FILES.get('avatar')
             new_name = request.POST.get('username')
             current_password= request.POST.get('password')
             new_password = request.POST.get('new_password')
             comfirm_password= request.POST.get('comfirm_password')
             new_email = request.POST.get('email')
-
+            
+            if new_avatar:
+                if user.avatar:
+                    os.remove(user.avatar.path)  
+                user.avatar=new_avatar
+                    
             if new_name:
                 user.username = new_name
             if new_email:

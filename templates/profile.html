@@ -8,18 +8,28 @@
       src="https://kit.fontawesome.com/b61b5c8440.js"
       crossorigin="anonymous"
     ></script>
+    <link
+      rel="shortcut icon"
+      href="{% static '/img/dcard-icon.png' %}"
+      type="image/png"
+    />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>個人檔案</title>
   </head>
   <body>
     {% if edit %}
     <div class="popbox">
-      <form method="post">
+      <form method="post" enctype="multipart/form-data">
         {% csrf_token %} {% load static %}
         <a href="{% url 'profile'  %}"
           ><img src="{% static 'img/x-icon.svg' %}" alt=""
         /></a>
         <h1>編輯</h1>
+        <div class="user">
+          <label for="avatar">大頭貼</label>
+          <input accept="image/*" type="file" name="avatar" id="avatar" />
+        </div>
         <div class="user">
           <label for="username">新名稱</label>
           <input
@@ -70,7 +80,14 @@
     <div class="container">
       <div class="main-container">
         <div class="profile-container">
+          {% if user.avatar %}
+          <div class="avatar">
+            <img src="{{user.avatar.url}}" alt="avatar" />
+          </div>
+          {% else %}
           <div class="avatar">{{user.username|slice:":1"}}</div>
+          {% endif %}
+
           <div class="profile">
             <p>{{user.username}}</p>
             <p>{{user.email}}</p>

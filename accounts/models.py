@@ -5,6 +5,7 @@ class UserAccount(models.Model):
     username=models.CharField(max_length=100)
     password=models.CharField(max_length=200)
     email=models.EmailField(unique=True)
+    avatar=models.ImageField(upload_to='avatars/',blank=True,null=True)
     created_at=models.DateTimeField(auto_now_add=True)
     def set_password(self, raw_password):
         self.password = make_password(raw_password)  # 使用 Django 的加密方式設置密碼

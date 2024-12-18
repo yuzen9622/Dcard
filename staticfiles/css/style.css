@@ -101,14 +101,13 @@ width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5px 10px;
-  
+    padding: 5px 10px; 
     border: none;
-   
     font-size: 16px;
     background-color:transparent ;
     color: white;
 }
+
 .navbar img{
     width: 16px;
     color: white;
@@ -251,25 +250,32 @@ width: 50%;
 .create{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+  
     align-items: center;
     border-radius: 15px;
     width: 100%;
+    height: 100%;
+}
+.create h1{
+    margin-bottom: 10px;
 }
 .create div{
     display: flex;
     align-items: center;
     margin:10px;
-   
+    flex-grow: 1;
 }
 .create form{
     display: flex;
     flex-direction: column;
     align-items: center;
     width: auto;
+   height: 90%;
+    overflow: auto;
 }
 .create textarea,.create input,.create select{
     padding: 5px;
+   
     font-size: 18px;
     resize: vertical;
     border: 1px solid #00000039;
@@ -277,6 +283,7 @@ width: 50%;
     border-radius: 10px;
     letter-spacing: 1px;
 }
+
 .create input{
     font-size: 18px;
 }
@@ -394,6 +401,7 @@ align-items: center;
     margin-top:20px ;
 }
 .profile-container .avatar{
+  
     display: flex;
     align-items: center;
     justify-content: center;
@@ -401,16 +409,30 @@ align-items: center;
     height: 130px;
     border-radius: 100%;
     background-color: #3397cf;
+    border: 1px solid #333;
     font-size: 55px;
     color: white;
     font-weight: 600;
     text-transform: uppercase;
+    overflow: hidden;
 }
+.avatar img{
+    width: 100%;
+    height: 100%;
+    /* aspect-ratio: 1/1; */
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+
 .profile-container .profile{
     margin: 10px;
     display: flex;
     flex-direction: column;
 }
+
+
+
 .profile p{
 
     padding: 10px;
@@ -437,7 +459,7 @@ align-items: center;
     position: absolute;
 background-color: rgba(0, 0, 0,0.5);
 
-border-radius: 10px;
+
 top: 50%;
 left: 50%;
 transform: translate(-50%,-50%);
@@ -446,10 +468,12 @@ transform: translate(-50%,-50%);
     position: relative;
     background-color: white;
     width: 550px;
-height: min-content;
+    height: 90%;
+    overflow: auto;
     border-radius: 10px;
     justify-content: flex-start;
     padding: 15px;
+  
 }
 .popbox a{
     position: absolute;

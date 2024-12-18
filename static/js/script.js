@@ -2,6 +2,7 @@ let emailInput = document.getElementById("email");
 let emailError = document.getElementById("email_error");
 let passwordEl = document.querySelectorAll("input[type='password']");
 let checkboxEl = document.getElementById("show");
+
 const validateEmail = (email) => {
   return String(email)
     .toLowerCase()
@@ -24,5 +25,5 @@ checkboxEl &&
       el.type = checkboxEl.checked ? "text" : "password";
     });
   });
-console.log(passwordEl);
+
 console.log("get script");

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>comment-edit</title>
+  </head>
+  <body>
+    <form action="{% url 'comment_edit' id=comment.id %}" method="post">
+      {% csrf_token %}
+      <label for="content">編輯留言</label>
+      <input
+        type="text"
+        name="content"
+        id="content"
+        value="{{ comment.content }}"
+      />
+      <button type="submit">更改</button>
+    </form>
+  </body>
+</html>

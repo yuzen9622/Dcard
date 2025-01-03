@@ -1,149 +1,173 @@
-*{
-    font-family:Arial, Helvetica, sans-serif;
+* {
+    font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
 }
 
 .sidebar ::-webkit-scrollbar {
-    width: 10px; /*右側捲軸寬度*/
-    height: 10px; /*下方捲軸高度*/
-  }
-  .sidebar ::-webkit-scrollbar-track {
-    background: transparent; 
-  }
-
-  .sidebar ::-webkit-scrollbar-thumb {
-    background:#01121c; 
+    width: 10px;
+    /*右側捲軸寬度*/
+    height: 10px;
+    /*下方捲軸高度*/
 }
 
-.main-container::-webkit-scrollbar,.main-container ::-webkit-scrollbar {
-    width: 10px; /*右側捲軸寬度*/
-    height: 10px; /*下方捲軸高度*/
-  }
-.main-container::-webkit-scrollbar-track,.main-container ::-webkit-scrollbar-track {
-    background: transparent; 
-  }
-
-.main-container::-webkit-scrollbar-thumb,.main-container ::-webkit-scrollbar-thumb {
-    background:#0000001a; 
+.sidebar ::-webkit-scrollbar-track {
+    background: transparent;
 }
-body{
+
+.sidebar ::-webkit-scrollbar-thumb {
+    background: #01121c;
+}
+
+.main-container::-webkit-scrollbar,
+.main-container ::-webkit-scrollbar {
+    width: 10px;
+    /*右側捲軸寬度*/
+    height: 10px;
+    /*下方捲軸高度*/
+}
+
+.main-container::-webkit-scrollbar-track,
+.main-container ::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.main-container::-webkit-scrollbar-thumb,
+.main-container ::-webkit-scrollbar-thumb {
+    background: #0000001a;
+}
+
+body {
     display: flex;
     height: 100dvh;
     flex-direction: column;
     background-color: #00324e;
 }
-.container{
+
+.container {
     display: flex;
     justify-content: center;
     height: 100%;
     overflow: hidden;
 
 }
-.main-container{
+
+.main-container {
     margin: 10px;
     border-radius: 15px;
     background-color: white;
-display: flex;
-flex-direction: column;
-align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 60%;
 
 }
-.main-container h1{
- 
+
+.main-container h1 {
+
     width: 100%;
     text-overflow: ellipsis;
-    overflow:hidden;
+    overflow: hidden;
     white-space: nowrap;
 
 }
+
 /*navbar*/
-.navbar{
+.navbar {
     display: flex;
     width: 100%;
     justify-content: space-around;
     align-items: center;
     padding: 10px 0;
-    background-color:#006aa6;
+    background-color: #006aa6;
     color: white;
-font-size: 18px;
+    font-size: 18px;
 }
-.navbar .search{
+
+.navbar .search {
     display: flex;
     align-items: center;
-width: 50%;
+    width: 50%;
 }
-.navbar .search a{
+
+.navbar .search a {
     font-weight: 600;
     font-size: 22px;
 }
-.navbar form{
+
+.navbar form {
     display: flex;
     height: 100%;
     border: 1px solid #00314e7f;
 }
-.navbar input{
+
+.navbar input {
     height: 100%;
     padding: 5px;
     font-size: 18px;
     font-weight: 400;
     background-color:
-    #00314e7f;
+        #00314e7f;
     border: none;
     outline: none;
     color: white;
     flex: 1;
-    
-  
+
+
 }
-.navbar button{
+
+.navbar button {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5px 10px; 
+    padding: 5px 10px;
     border: none;
     font-size: 16px;
-    background-color:transparent ;
+    background-color: transparent;
     color: white;
 }
 
-.navbar img{
+.navbar img {
     width: 16px;
     color: white;
 }
-.navbar input::placeholder{
+
+.navbar input::placeholder {
     color: #ffffff51;
 }
 
-.navbar a{
+.navbar a {
     text-decoration: none;
-    color:  white;
+    color: white;
     font-size: 18px;
     padding: 5px 10px;
 }
+
 /*sidebar*/
-.sidebar{
+.sidebar {
     display: flex;
     padding: 10px;
     flex-direction: column;
     min-width: 200px;
     background-color: #00324e;
     color: white;
-   
-    
-    
+
+
+
 }
-.sidebar ul{
+
+.sidebar ul {
     list-style: none;
     overflow: auto;
 }
-.sidebar h3{
-    margin:5px 10px;
-    color: 
-    #ffffff66;
+
+.sidebar h3 {
+    margin: 5px 10px;
+    color:
+        #ffffff66;
 }
-.sidebar a{
+
+.sidebar a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -154,128 +178,152 @@ width: 50%;
     transition: all .3s;
 }
 
-.sidebar a:hover{
-    background-color: 
-    #01121c;
+.sidebar a:hover {
+    background-color:
+        #01121c;
 }
-.sidebar .active:hover{
+
+.sidebar .active:hover {
     background-color: #00324e;
 }
-.sidebar .active{
-    background-color:#ffffff4d ;
+
+.sidebar .active {
+    background-color: #ffffff4d;
 }
+
 /*文章顯示區域*/
-.posts{
-    
+.posts {
+
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
     overflow: auto;
-    margin:0 20px;
+    margin: 0 20px;
 }
-.post{
-  
+
+.post {
+
     padding: 10px 20px;
     min-height: 100px;
     border-bottom: 1px solid #0000001a;
 }
-.post h2{
-  font-size: 23px;
-    
+
+.post h2 {
+    font-size: 23px;
+
 }
-.post p,.card p{
+
+.post p,
+.card p {
     font-size: 16px;
-  text-overflow: ellipsis;
-  overflow:hidden;
-  white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
-.detail{
+
+.detail {
     font-size: 14px !important;
-      text-decoration: none;
-      color: #10101075;
-      font-weight: 600;
-   
-   }
-.post a:has(h2),.card{
+    text-decoration: none;
+    color: #10101075;
+    font-weight: 600;
+
+}
+
+.post a:has(h2),
+.card {
     display: block;
     height: 100%;
     text-decoration: none;
     color: black;
 }
-.posts h1{
+
+.posts h1 {
     text-align: center;
 }
 
 /*單獨文章顯示區域*/
-.main-container:has(.article,.recommend){
- justify-content: space-between;
-  overflow: auto;
+.main-container:has(.article, .recommend) {
+    justify-content: space-between;
+    overflow: auto;
     max-width: 700px;
     padding: 10px;
 }
-.article{
- 
- width: calc(100% - 40px);
+
+.article {
+
+    width: calc(100% - 40px);
     padding: 10px 20px;
-    
+
 }
-.article .poster{
+
+.article .poster {
     color: #3397cf;
     font-size: 18px;
-   font-weight: 600;
+    font-weight: 600;
 }
-.article h1{
+
+.article h1 {
     margin-top: 10px;
     text-align: start;
     border-top: 1px solid #0000001a;
-    font-size:30px;
+    font-size: 30px;
 }
-.article p{
-   font-size: 18px;
-    overflow-wrap:break-word ;
+
+.article p {
+    font-size: 18px;
+    overflow-wrap: break-word;
     white-space: pre-wrap;
-   
+
 }
-.article a{
+
+.article a {
     text-decoration: none;
     font-size: 18px;
     color: #01121c;
 }
+
 /*創建文章*/
-.main-container:has(.create){
+.main-container:has(.create) {
     min-width: 550px;
-    
+
 }
-.create{
+
+.create {
     display: flex;
     flex-direction: column;
-  
+
     align-items: center;
     border-radius: 15px;
     width: 100%;
     height: 100%;
 }
-.create h1{
+
+.create h1 {
     margin-bottom: 10px;
 }
-.create div{
+
+.create div {
     display: flex;
     align-items: center;
-    margin:10px;
+    margin: 10px;
     flex-grow: 1;
 }
-.create form{
+
+.create form {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: auto;
-   height: 90%;
+    height: 90%;
     overflow: auto;
 }
-.create textarea,.create input,.create select{
+
+.create textarea,
+.create input,
+.create select {
     padding: 5px;
-   
+
     font-size: 18px;
     resize: vertical;
     border: 1px solid #00000039;
@@ -284,14 +332,16 @@ width: 50%;
     letter-spacing: 1px;
 }
 
-.create input{
+.create input {
     font-size: 18px;
 }
-.create button{
+
+.create button {
     width: 30%;
 }
 
-.create a,.create button{
+.create a,
+.create button {
     margin: 10px;
     text-decoration: none;
     color: white;
@@ -299,71 +349,83 @@ width: 50%;
     border-radius: 10px;
     font-size: 18px;
 }
+
 /*推薦文章*/
-.recommend{
+.recommend {
     padding: 10px;
     display: flex;
     overflow-x: auto;
- 
-   
+
+
 }
-.card h1{
+
+.card h1 {
     font-size: 16px;
-    text-overflow: ellipsis; 
+    text-overflow: ellipsis;
     overflow: hidden;
-  text-overflow: ellipsis;
-  overflow:hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
-.card p{
+
+.card p {
     font-size: 14px;
 }
-.card{
+
+.card {
 
     padding: 10px;
     width: 200px;
-border: 2px solid #10101075;
-margin:  0 10px;
-border-radius: 15px;
-height: 100px;
+    border: 2px solid #10101075;
+    margin: 0 10px;
+    border-radius: 15px;
+    height: 100px;
 }
+
 /*登入區域*/
-.main-container:has(.login-container,.register-container){
-    max-width:600px;
+.main-container:has(.login-container, .register-container) {
+    max-width: 600px;
 }
-:is(.register-container,.login-container){
+
+:is(.register-container, .login-container) {
     display: flex;
     flex-direction: column;
-align-items: center;
+    align-items: center;
     width: 100%;
 
 }
-:is(.register-container,.login-container,.popbox) form{
+
+:is(.register-container, .login-container, .popbox) form {
     display: flex;
     flex-direction: column;
-justify-content: space-around;
-align-items: center;
+    justify-content: space-around;
+    align-items: center;
     height: 100%;
     width: 100%;
 
 }
-:is(.register-container,.login-container,.create,.popbox) h1{
+
+:is(.register-container, .login-container, .create, .popbox) h1 {
     margin-top: 10px;
     font-weight: 400;
     font-size: 36px;
     text-align: center;
 }
-:is(.register-container,.login-container,.popbox) .user{
+
+:is(.register-container, .login-container, .popbox) .user {
     margin: 5px;
     display: flex;
     flex-direction: column;
-    width:80%;
+    width: 80%;
 }
-:is(.register-container,.login-container,.popbox) label{
+
+:is(.register-container, .login-container, .popbox) label {
     padding: 10px 10px 10px 0;
 }
-:is(.register-container,.login-container,.popbox) input,:is(.register-container,.login-container,.popbox) button{
+
+:is(.register-container, .login-container, .popbox) input,
+:is(.register-container, .login-container, .popbox) button {
     padding: 15px;
     letter-spacing: .5px;
     font-size: 16px;
@@ -371,37 +433,44 @@ align-items: center;
     outline: none;
     border: 1px solid #00000039;
 }
-:is(.register-container,.login-container,.create,.popbox) button{
-   border: none;
+
+:is(.register-container, .login-container, .create, .popbox) button {
+    border: none;
     width: 80%;
     background-color:
-    #3397cf ;
+        #3397cf;
     color: white;
     margin-top: 20px;
-   
+
 }
-:is(.register-container,.login-container,.create) a{
+
+:is(.register-container, .login-container, .create) a {
     text-decoration: none;
     color: #3397cf;
 }
-:is(.register-container,.login-container,.create,.popbox) button:hover{
+
+:is(.register-container, .login-container, .create, .popbox) button:hover {
     background-color: #64acd5;
 }
-:is(.register-container,.login-container,.create,.popbox) button:active{
+
+:is(.register-container, .login-container, .create, .popbox) button:active {
     box-shadow: inset 0px 1px 2px #333;
 }
-.error{
-    color:rgb(234, 92, 92) ;
+
+.error {
+    color: rgb(234, 92, 92);
 }
+
 /*個人區域*/
-.profile-container{
+.profile-container {
     display: flex;
     width: 100%;
     justify-content: center;
-    margin-top:20px ;
+    margin-top: 20px;
 }
-.profile-container .avatar{
-  
+
+.profile-container .avatar {
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -416,7 +485,8 @@ align-items: center;
     text-transform: uppercase;
     overflow: hidden;
 }
-.avatar img{
+
+.avatar img {
     width: 100%;
     height: 100%;
     /* aspect-ratio: 1/1; */
@@ -425,7 +495,7 @@ align-items: center;
 }
 
 
-.profile-container .profile{
+.profile-container .profile {
     margin: 10px;
     display: flex;
     flex-direction: column;
@@ -433,38 +503,40 @@ align-items: center;
 
 
 
-.profile p{
+.profile p {
 
     padding: 10px;
     font-size: 18px;
     font-weight: 600;
 }
-.profile a{
+
+.profile a {
     text-decoration: none;
     text-align: center;
     font-size: 18px;
     padding: 5px;
     border: none;
-    background-color:#3397cf;
+    background-color: #3397cf;
     color: white;
-    border-radius:10px ;
+    border-radius: 10px;
 }
 
-.popbox{
+.popbox {
     width: 100%;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
-background-color: rgba(0, 0, 0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
 
 
-top: 50%;
-left: 50%;
-transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
-.popbox form{
+
+.popbox form {
     position: relative;
     background-color: white;
     width: 550px;
@@ -473,50 +545,182 @@ transform: translate(-50%,-50%);
     border-radius: 10px;
     justify-content: flex-start;
     padding: 15px;
-  
+
 }
-.popbox a{
+
+.popbox a {
     position: absolute;
     right: 10%;
     text-decoration: none;
     color: black;
-padding: 10px;
-width: 20px;
-display: flex;
-align-items: center;
-height: 20px;
-justify-content: center;
-border-radius: 100%;
+    padding: 10px;
+    width: 20px;
+    display: flex;
+    align-items: center;
+    height: 20px;
+    justify-content: center;
+    border-radius: 100%;
 }
-.popbox img{
+
+.popbox img {
     width: 16px;
 }
-.popbox a:hover{
-    background-color: rgba(0, 0, 0,0.1);
+
+.popbox a:hover {
+    background-color: rgba(0, 0, 0, 0.1);
 }
-.check-box{
+
+.check-box {
     display: flex;
     width: 80%;
 }
-.check-box label{
+
+.check-box label {
     padding: 10px;
 }
-.check-box input{
+
+.check-box input {
     width: 18px;
     background-color: #3397cf;
-   
+
 }
-.history{
+
+.history {
     width: 100%;
-overflow: hidden;
+    overflow: hidden;
     display: flex;
-    align-items: center;
+
     flex-direction: column;
 }
-.history h1{
+
+.history h1 {
     text-align: center;
 }
-.history .posts{
- 
+
+.history .posts {
+
     margin: 0;
+}
+
+.history-nav {
+    flex-grow: 1;
+    display: flex;
+    padding: 10px;
+    list-style: none;
+
+}
+
+.history-nav button {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    color: #333333c6;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.history-nav button:hover {
+    color: #000;
+}
+
+.history-nav .active {
+    color: #000;
+    border-bottom: 2px solid #3397cf;
+}
+
+/*留言區*/
+
+.comment {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.comment h3 {
+    font-size: 25px;
+}
+
+.comment form {
+    width: 100%;
+
+}
+
+.comment textarea {
+    width: 90%;
+    min-height: min-content;
+    padding: 10px;
+    font-size: 18px;
+    resize: vertical;
+    border: 1px solid #00000039;
+    outline: none;
+    border-radius: 10px;
+    letter-spacing: 1px;
+}
+
+.post-comment button {
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+    background-color: #3397cf;
+    color: white;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.comment-card {
+    display: flex;
+    padding: 10px;
+}
+
+
+.comment-card .avatar {
+    width: 30px;
+    height: 30px;
+    padding: 0 10px;
+}
+
+.comment-card .poster {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.content {
+    width: 100%;
+}
+
+.text p {
+    font-size: 16px;
+}
+
+.detail p {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.edit {
+    display: flex;
+    align-items: center;
+}
+
+.edit :is(button, a) {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+
+}
+
+.edit :is(button, a):hover {
+    background-color: #33333386;
+
+}
+
+.edit img {
+
+    width: 15px;
+    height: 15px;
 }

@@ -3,7 +3,7 @@ from .models import UserAccount
 from django.http import HttpResponseRedirect
 from django.contrib import messages  # 引入 messages 系統
 from django.contrib.auth import logout
-from post.models import Post
+from post.models import Post,Comment
 import os
 # Create your views here.
 def login_user(request):
@@ -80,11 +80,18 @@ def profile(request):
     user = None
     user_id = request.session.get('user_id')
     edit = request.GET.get('edit', 'false').lower() == 'true'
+    history=request.POST.get('history')or "post"
+    history_list=None
+    print(history)
     if user_id:
         user = UserAccount.objects.get(id=user_id)
-        history=Post.objects.filter(poster=user)
+        if history=="comment":
+            history_list=Comment.objects.filter(poster=user)
+        else:
+            history_list=Post.objects.filter(poster=user)
         # 檢查是否為 POST 請求，並更新使用者資料
-        if request.method == 'POST':
+     
+        if request.method == 'POST' and not request.POST.get('history'):
             new_avatar=request.FILES.get('avatar')
             new_name = request.POST.get('username')
             current_password= request.POST.get('password')
@@ -120,7 +127,7 @@ def profile(request):
             # 更新完成後可跳轉到某頁面或顯示成功訊息
             return HttpResponseRedirect('/auth/profile')
 
-        return render(request, 'profile.html', {'user': user,'edit':edit,'history':history})
+        return render(request, 'profile.html', {'user': user,'edit':edit,'history':history,'history_list':history_list})
     
     # 如未登入可跳轉至登入頁面
     return redirect('login')

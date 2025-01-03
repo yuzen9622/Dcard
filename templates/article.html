@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="{% static '/css/style.css' %}" />
     <link
       rel="preload"
-      href="https://kit.fontawesome.com/b61b5c8440.js"
       as="script"
+      href="https://kit.fontawesome.com/b61b5c8440.js"
     />
     <link
       rel="shortcut icon"
@@ -34,7 +34,60 @@
           <p class="detail">{{article.created_at|time}}</p>
           <p>{{ article.content }}</p>
         </div>
-        <div style="width: 100%">
+        <div class="comment">
+          <h3>留言</h3>
+
+          <form
+            method="post"
+            class="post-comment"
+            action="{% url 'comment_post'  %}"
+          >
+            {% csrf_token %}
+            <input type="hidden" name="post_id" value="{{ article.id }}" />
+            <textarea name="content" placeholder="留言..."></textarea>
+            <button type="submit">留言</button>
+          </form>
+          <div class="commmit-container">
+            {% if comments %} {% for comment in comments %}
+            <div class="comment-card">
+              <div class="avatar">
+                <img src="{{comment.poster.avatar.url}}" alt="" />
+              </div>
+              <div class="content">
+                <div class="poster">
+                  {{comment.poster}} {% if comment.poster == user %}
+                  <div class="edit">
+                    <form>
+                      {% csrf_token %}
+                      <a href="{% url 'comment_edit' id=comment.id %}">
+                        <img src="{% static 'img/edit.svg' %}" alt="" />
+                      </a>
+                    </form>
+                    <form>
+                      {% csrf_token %}
+                      <button
+                        type="submit"
+                        formmethod="post"
+                        formaction="{% url 'comment_delete' id=comment.id %}"
+                      >
+                        <img src="{% static 'img/trash-can.svg' %}" alt="" />
+                      </button>
+                    </form>
+                  </div>
+                  {% endif %}
+                </div>
+                <div class="text">
+                  <p>{{comment.content}}</p>
+                </div>
+                <div class="detail">
+                  <p>{{comment.created_at|time}}</p>
+                </div>
+              </div>
+            </div>
+            {% endfor %} {% endif %}
+          </div>
+        </div>
+        <div style="width: 100%; margin-top: 10px">
           {% if same_article %}
           <h3>{{article.get_category_display}}版更多</h3>
           {% endif %}

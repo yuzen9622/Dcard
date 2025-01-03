@@ -96,21 +96,58 @@
           </div>
         </div>
         <div class="history">
-          <h1>發文紀錄</h1>
-          {% if history %} {% load custom_filters %}
+          <ul class="history-nav">
+            <li>
+              <form action="{% url 'profile'  %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="history" value="post" />
+                <button type="submit" class="{% if history == 'post' %} active {% endif %}" >發文歷史</button>
+              </form>
+            </li>
+            <li>
+              <form action="{% url 'profile'  %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="history" value="comment"  />
+                <button type="submit" class='{% if history == "comment" %}active{% endif %}' >留言歷史</button>
+              </form>
+            </li>
+          </ul>
+       
+          {% if history_list %} {% load custom_filters %}
           <div class="posts">
-            {% for post in history%}
+            {% for history_item in history_list%}
             <div class="post">
+              {% if history_item.category %}
               <a
                 class="detail"
-                href="{% url 'post_list_by_category' category=post.category %}"
+                href="{% url 'post_list_by_category' category=history_item.category %}"
               >
-                {{ post.get_category_display }} ·
-                {{post.created_at|time_since_custom}}
+                {{ history_item.get_category_display }} ·
+                {{history_item.created_at|time_since_custom}}
               </a>
-              <a href="{% url 'article_post' id=post.id %}">
-                <h2>{{ post.title }}</h2>
-                <p>{{ post.content|truncatewords:20 }}</p>
+              {% else %}
+              <a
+                class="detail"
+                href="{% url 'post_list_by_category' category=history_item.post.category %}"
+              >
+                {{ history_item.post.get_category_display }} ·
+                {{history_item.post.created_at|time_since_custom}}
+              </a>
+              {% endif %} {% if history_item.post.id %}
+              <a href="{% url 'article_post' id=history_item.post.id %}">
+                {% else %}
+                <a href="{% url 'article_post' id=history_item.id %}">
+                {% endif %} {% if history_item.title %}
+                <h2>{{ history_item.title }}</h2>
+                {% elif history_item.post.title %}
+                <h2>{{ history_item.post.title }}</h2>
+                {% endif %}
+                {% if history_item.post.id %}
+                <p>留言</p>
+                {% endif %}
+                <p style=" {% if history_item.post.id %}font-weight:600;{% endif %}">{{ history_item.content|truncatewords:20 }}</p>
+               
+               
               </a>
             </div>
             {% endfor %} {% endif %}

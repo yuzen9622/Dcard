@@ -50,9 +50,13 @@
           <div class="commmit-container">
             {% if comments %} {% for comment in comments %}
             <div class="comment-card">
+              {% if comment.poster.avatar %}
               <div class="avatar">
-                <img src="{{comment.poster.avatar.url}}" alt="" />
+                <img src="{{comment.poster.avatar.url}}" alt="avatar" />
               </div>
+              {% else %}
+              <div class="avatar">{{comment.poster.username|slice:":1"}}</div>
+              {% endif %}
               <div class="content">
                 <div class="poster">
                   {{comment.poster}} {% if comment.poster == user %}

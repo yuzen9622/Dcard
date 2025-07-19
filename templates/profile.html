@@ -57,11 +57,11 @@
           />
         </div>
         <div class="user">
-          <label for="comfirm_password">確認新密碼</label>
+          <label for="confirm_password">確認新密碼</label>
           <input
             type="password"
-            id="comfirm_password"
-            name="comfirm_password"
+            id="confirm_password"
+            name="confirm_password"
             value=""
           />
         </div>
@@ -145,7 +145,7 @@
                 {% if history_item.post.id %}
                 <p>留言</p>
                 {% endif %}
-                <p style=" {% if history_item.post.id %}font-weight:600;{% endif %}">{{ history_item.content|truncatewords:20 }}</p>
+                <p style="{% if history_item.post.id %}font-weight:600;{% endif %}">{{ history_item.content|truncatewords:20 }}</p>
                
                
               </a>

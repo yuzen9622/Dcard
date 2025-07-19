@@ -96,7 +96,7 @@ def profile(request):
             new_name = request.POST.get('username')
             current_password= request.POST.get('password')
             new_password = request.POST.get('new_password')
-            comfirm_password= request.POST.get('comfirm_password')
+            confirm_password= request.POST.get('confirm_password')
             new_email = request.POST.get('email')
             
             if new_avatar:
@@ -112,7 +112,7 @@ def profile(request):
                 if not user.check_password(current_password):
                     messages.error(request,"舊密碼錯誤")
                     return HttpResponseRedirect("/auth/profile?edit=true")
-                if  comfirm_password!=new_password:
+                if  confirm_password!=new_password:
                     messages.error(request,"兩次密碼不一致")
                     return HttpResponseRedirect("/auth/profile?edit=true")
                 if  current_password==new_password:

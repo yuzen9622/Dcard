@@ -97,7 +97,9 @@ def comment_post(request):
             comment=Comment(poster=user,content=content,post=post)
             comment.save()
             return redirect('article_post',id=post_id)
-    return redirect('post_list')
+    messages.error(request,"登入，即可留言")
+    return redirect('login')
+
 def comment_delete(request,id):
     user=None
     if check_login(request):

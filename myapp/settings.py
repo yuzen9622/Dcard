@@ -27,7 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = [".vercel.app","127.0.0.1","dcard.zeabur.app"]
 
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://dcard.zeabur.app',
+]
 # Application definition
 
 INSTALLED_APPS = [

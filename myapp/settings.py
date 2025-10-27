@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure--f40qpxod%tv$a1h2t$s&@f++g_^yv%r+lfrcoh)7)c0hec-z+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [".vercel.app","127.0.0.1"]
+ALLOWED_HOSTS = [".vercel.app","127.0.0.1","dcard.zeabur.app"]
 
 
 # Application definition
@@ -77,13 +77,23 @@ WSGI_APPLICATION = 'myapp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'zeabur',
+        'USER': 'root',
+        'PASSWORD': '0uUC35bFxVeJQ9sap7Tv6WoK41PO82tE',
+        'HOST': 'sjc1.clusters.zeabur.com',
+        'PORT': '31493',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -123,7 +133,7 @@ STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"), 
-    "/var/www/static/",
+    # "/var/www/static/",
     
 ]
 STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')

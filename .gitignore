@@ -1,2 +1,26 @@
 datadump_clean.json
 clean_dump.py
+# Django-specific files
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+media/ # If user-uploaded media is stored locally and not managed by a cloud service
+static_collected/ # If collectstatic outputs to a local directory
+
+# Virtual Environment
+.env
+venv/
+env/
+
+# IDE-specific files (e.g., PyCharm)
+.idea/
+
+# Other files
+.DS_Store
+Thumbs.db
+.coverage
+.tox/
+.eggs/
